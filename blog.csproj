@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-blog-7E0856A6-3C02-4E9A-A2EF-22F8E7C91128</UserSecretsId>
+    <AssemblyName>blog</AssemblyName>
+    <RootNamespace>blog</RootNamespace>
   </PropertyGroup>
 
 

@@ -2,53 +2,19 @@
 @model blog.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Posts";
 }
 
-<h1>Index</h1>
+<h1>Posts</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].LastEdited)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Preview)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Post[0].Body)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Post) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastEdited)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preview)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Body)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+
+@foreach (var item in Model.Post)
+{
+    <h2><a asp-page="./Details" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Title)</a></h2>
+    <p style="color:dimgrey"><i>@Html.DisplayFor(modelItem => item.LastEdited)</i></p>
+    <p>@Html.DisplayFor(modelItem => item.Preview)</p>
+    <hr>
 }
-    </tbody>
-</table>

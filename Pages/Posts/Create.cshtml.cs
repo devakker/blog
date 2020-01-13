@@ -31,6 +31,8 @@ namespace blog
         // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Post.LastEdited = DateTime.Now;
+
             if (!ModelState.IsValid)
             {
                 return Page();

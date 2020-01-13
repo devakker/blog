@@ -4,13 +4,13 @@
 @{
     ViewData["Title"] = @Html.DisplayFor(model => model.Post.Title);
 }
-
-<h1>@Html.DisplayFor(model => model.Post.Title)</h1>
-<p style="color:dimgrey"><i>@Html.DisplayFor(modelItem => Model.Post.LastEdited)</i></p>
-<p>@Html.DisplayFor(model => model.Post.Preview)</p>
-<hr />
-<p>@Html.DisplayFor(model => model.Post.Body)</p>
-
+<div>
+    <h1>@Html.DisplayFor(model => model.Post.Title)</h1>
+    <p style="color:dimgrey"><i>@Html.DisplayFor(modelItem => Model.Post.LastEdited)</i></p>
+    <p>@Html.DisplayFor(model => model.Post.Preview)</p>
+    <hr />
+    <text>@Html.DisplayFor(model => model.Post.Body)</text>
+</div>
 <div>
     @if (User.Identity.IsAuthenticated)
     {

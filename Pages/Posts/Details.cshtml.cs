@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using blog.Data;
 using blog.Models;
+using Markdig;
 
 namespace blog
 {
@@ -23,12 +20,15 @@ namespace blog
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
             }
 
             Post = await _context.Post.FirstOrDefaultAsync(m => m.ID == id);
+            var html = Markdown.ToHtml(Post.Body);
+            Post.Body = html;
 
             if (Post == null)
             {

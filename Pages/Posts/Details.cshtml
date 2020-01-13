@@ -4,17 +4,18 @@
 @{
     ViewData["Title"] = @Html.DisplayFor(model => model.Post.Title);
 }
-<div>
+<div class="col-md-12">
     <h1>@Html.DisplayFor(model => model.Post.Title)</h1>
     <p style="color:dimgrey"><i>@Html.DisplayFor(modelItem => Model.Post.LastEdited)</i></p>
     <p>@Html.DisplayFor(model => model.Post.Preview)</p>
     <hr />
-    <text>@Html.DisplayFor(model => model.Post.Body)</text>
+    <markdown>@Html.DisplayFor(model => model.Post.Body)</markdown>
 </div>
 <div>
     @if (User.Identity.IsAuthenticated)
     {
         <a asp-page="./Edit" asp-route-id="@Model.Post.ID">Edit</a>
+        <a asp-page="./Delete" asp-route-id="@Model.Post.ID">Delete</a> 
     }
     <a asp-page="./Index">Back to List</a>
 </div>

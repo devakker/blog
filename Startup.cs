@@ -32,7 +32,13 @@ namespace blog
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddRazorPages();
+            services.AddRazorPages(options =>
+            { //https://wakeupandcode.com/authentication-authorization-in-asp-net-core-razor-pages/
+                options.Conventions.AuthorizePage("/Posts/Create");
+                options.Conventions.AuthorizePage("/Posts/Delete");
+                options.Conventions.AuthorizePage("/Posts/Edit");
+            }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
